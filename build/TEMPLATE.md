@@ -24,71 +24,7 @@ npm install -S @jswork/react-ant-status-switch
   ```
 2. import js
   ```js
-  import React, { useState } from 'react';
-  import ReactAntStatusSwitch from '@jswork/react-ant-status-switch';
-  import styled from 'styled-components';
-  import { Button } from 'antd';
-
-  const Container = styled.div`
-    width: 80%;
-    margin: 100px auto 0;
-    p {
-      margin-top: 10px;
-    }
-  `;
-
-  const items = [
-    {
-      value: 'default',
-      label: '默认 🤡'
-    },
-    {
-      value: 'success',
-      label: '成功 😎'
-    },
-    {
-      value: 'warning',
-      label: '警告 🥸'
-    },
-    {
-      value: 'error',
-      label: '失败 😤'
-    },
-    {
-      value: 'customize',
-      color: '#080',
-      label: '自定义状态 🤩'
-    }
-  ];
-
-  export default (props: any) => {
-    const [val, setVal] = useState('default');
-    return (
-      <Container>
-        <p>轻轻的移向我，我会改变状态滴.</p>
-        <ReactAntStatusSwitch
-          value={val}
-          items={items}
-          popoverOpts={{ placement: 'top' }}
-          onChange={(e) => {
-            console.log('e.', e.target.value);
-            setVal(e.target.value);
-          }}
-        />
-
-        <p>
-          Current status: <strong>{val}</strong>
-        </p>
-
-        <p>
-          <Button type="primary" onClick={(e) => setVal('success')}>
-            Force to Set status
-          </Button>
-        </p>
-      </Container>
-    );
-  };
-
+__GENERATE_DAPP__
   ```
 
 ## preview
