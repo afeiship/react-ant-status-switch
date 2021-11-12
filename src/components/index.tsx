@@ -36,6 +36,10 @@ export type ReactAntStatusSwitchProps = {
    */
   text?: string;
   /**
+   * The default layout.
+   */
+  layout?: string;
+  /**
    * The change handler.
    */
   onChange?: Function;
@@ -43,12 +47,17 @@ export type ReactAntStatusSwitchProps = {
    * Popover options.
    */
   popoverOpts?: any;
+  /**
+   * Tag options.
+   */
+  tagOpts?: any;
 };
 
 export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitchProps> {
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
+    layout: 'flat',
     items: [],
     onChange: noop
   };
@@ -59,11 +68,13 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
 
   get contentView() {
     const { items } = this.props;
+    const { value } = this.state;
     return (
       <ReactAntRadioGroup
         size="small"
         items={items}
         template={RctplAntRadioButton}
+        value={value}
         onChange={this.handleRGChange}
       />
     );
@@ -82,6 +93,23 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
     return text || target?.label || value;
   }
 
+  // @layout
+  get flatLayout() {
+    return this.contentView;
+  }
+
+  // @layout
+  get popoverLayout() {
+    const { tagOpts, popoverOpts } = this.props;
+    return (
+      <Popover content={this.contentView} {...popoverOpts}>
+        <Tag color={this.color} {...tagOpts}>
+          {this.text}
+        </Tag>
+      </Popover>
+    );
+  }
+
   shouldComponentUpdate(inProps) {
     const { value } = inProps;
     if (value !== this.state.value) {
@@ -97,14 +125,12 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
   };
 
   render() {
-    const { className, value, onChange, items, template, popoverOpts, ...props } = this.props;
+    const { className, value, layout, onChange, items, template, popoverOpts, ...props } = this.props;
     const theProps = filterProps(props);
 
     return (
-      <div data-component={CLASS_NAME} className={classNames(CLASS_NAME, className)} {...theProps}>
-        <Popover content={this.contentView} {...popoverOpts}>
-          <Tag color={this.color}>{this.text}</Tag>
-        </Popover>
+      <div data-component={CLASS_NAME} data-layout={layout} className={classNames(CLASS_NAME, className)} {...theProps}>
+        {this[layout! + 'Layout']}
       </div>
     );
   }

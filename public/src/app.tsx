@@ -3,6 +3,8 @@ import ReactAntStatusSwitch from '../../src/main';
 import styled from 'styled-components';
 import { Button } from 'antd';
 
+import '../../src/components/style.scss';
+
 const Container = styled.div`
   width: 80%;
   margin: 100px auto 0;
@@ -43,6 +45,18 @@ export default (props: any) => {
       <ReactAntStatusSwitch
         value={val}
         items={items}
+        layout={'flat'}
+        popoverOpts={{ placement: 'top' }}
+        onChange={(e) => {
+          console.log('e.', e.target.value);
+          setVal(e.target.value);
+        }}
+      />
+
+      <ReactAntStatusSwitch
+        value={val}
+        items={items}
+        layout={'popover'}
         popoverOpts={{ placement: 'top' }}
         onChange={(e) => {
           console.log('e.', e.target.value);
