@@ -57,7 +57,7 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
-    layout: 'flat',
+    layout: 'popover',
     items: [],
     onChange: noop
   };
