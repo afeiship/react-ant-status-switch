@@ -38,7 +38,7 @@ const items = [
 ];
 
 export default (props: any) => {
-  const [val, setVal] = useState('default');
+  const [val, setVal] = useState('success');
   return (
     <Container>
       <p>轻轻的移向我，我会改变状态滴.</p>
@@ -67,6 +67,10 @@ export default (props: any) => {
       <p>
         Current status: <strong>{val}</strong>
       </p>
+
+      <p>Only tag status</p>
+
+      <ReactAntStatusSwitch value={val} items={items} layout={'tag'} />
 
       <p>
         <Button type="primary" onClick={(e) => setVal('success')}>

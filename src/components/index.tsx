@@ -100,13 +100,21 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
 
   // @layout
   get popoverLayout() {
-    const { tagOpts, popoverOpts } = this.props;
+    const { popoverOpts } = this.props;
     return (
       <Popover content={this.contentView} {...popoverOpts}>
-        <Tag color={this.color} {...tagOpts}>
-          {this.text}
-        </Tag>
+        {this.tagLayout}
       </Popover>
+    );
+  }
+
+  // @layout
+  get tagLayout() {
+    const { tagOpts } = this.props;
+    return (
+      <Tag color={this.color} {...tagOpts}>
+        {this.text}
+      </Tag>
     );
   }
 
