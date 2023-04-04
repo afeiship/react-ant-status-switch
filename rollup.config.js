@@ -18,13 +18,12 @@ export default [
       file: pkg.main,
       format: 'umd',
       exports: 'named',
-      sourcemap: false,
       name: 'ReactAntStatusSwitchComponent',
       globals: {
         '@jswork/noop': 'noop',
         'prop-types': 'PropTypes',
-        classnames: 'classNames',
-        react: 'React',
+        'classnames': 'classNames',
+        'react': 'React',
         'react-dom': 'ReactDOM'
       }
     },
