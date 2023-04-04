@@ -15,7 +15,7 @@ yarn add @jswork/react-ant-status-switch
 1. import js
   ```js
   import React, { useState } from 'react';
-  import ReactAntStatusSwitch from '@jswork/react-ant-status-switch';
+  import ReactAntStatusSwitch from '@/main';
   import styled from 'styled-components';
   import { Button } from 'antd';
 

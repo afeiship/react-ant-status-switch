@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import path from 'path';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 // import { VitePWA } from 'vite-plugin-pwa';
 
@@ -8,6 +9,11 @@ import reactRefresh from '@vitejs/plugin-react-refresh';
 export default defineConfig({
   root: 'public',
   base: '',
+  resolve: {
+    alias: {
+      '@': path.join(__dirname, 'src')
+    }
+  },
   build: {
     outDir: '../docs',
     emptyOutDir: true

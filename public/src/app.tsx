@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactAntStatusSwitch from '../../src/main';
+import ReactAntStatusSwitch from '@/main';
 import styled from 'styled-components';
 import { Button } from 'antd';
 

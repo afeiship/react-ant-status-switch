@@ -25,7 +25,13 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "src",
@@ -34,5 +40,5 @@
   "exclude": [
     "node_modules",
     "dist"
-  ]
+  ],
 }
