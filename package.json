@@ -1,7 +1,7 @@
 {
   "name": "@jswork/react-ant-status-switch",
   "homepage": "https://js.work",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "React status swicher component based on antd.",
   "license": "MIT",
   "main": "dist/index.js",
@@ -79,5 +79,11 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "keywords": [
+    "react",
+    "ant",
+    "status",
+    "switch"
+  ]
 }
