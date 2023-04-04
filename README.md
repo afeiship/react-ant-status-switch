@@ -51,7 +51,7 @@ yarn add @jswork/react-ant-status-switch
     }
   ];
 
-  export default (props: any) => {
+  export default () => {
     const [val, setVal] = useState('success');
     return (
       <Container>
@@ -87,7 +87,7 @@ yarn add @jswork/react-ant-status-switch
         <ReactAntStatusSwitch value={val} items={items} layout={'tag'} />
 
         <p>
-          <Button type="primary" onClick={(e) => setVal('success')}>
+          <Button type="primary" onClick={() => setVal('success')}>
             Force to Set status
           </Button>
         </p>

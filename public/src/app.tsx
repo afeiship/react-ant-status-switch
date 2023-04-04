@@ -35,7 +35,7 @@ const items = [
   }
 ];
 
-export default (props: any) => {
+export default () => {
   const [val, setVal] = useState('success');
   return (
     <Container>
@@ -71,7 +71,7 @@ export default (props: any) => {
       <ReactAntStatusSwitch value={val} items={items} layout={'tag'} />
 
       <p>
-        <Button type="primary" onClick={(e) => setVal('success')}>
+        <Button type="primary" onClick={() => setVal('success')}>
           Force to Set status
         </Button>
       </p>
