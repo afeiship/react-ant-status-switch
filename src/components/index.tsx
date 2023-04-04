@@ -1,7 +1,6 @@
 import noop from '@jswork/noop';
 import classNames from 'classnames';
 import React, { Component } from 'react';
-import filterProps from '@jswork/filter-react-props';
 import ReactAntRadioGroup from '@jswork/react-ant-radio-group';
 import RctplAntRadioButton from '@jswork/rctpl-ant-radio-button';
 import { Popover, Tag } from 'antd';
@@ -133,11 +132,15 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
   };
 
   render() {
-    const { className, value, layout, onChange, items, template, popoverOpts, ...props } = this.props;
-    const theProps = filterProps(props);
+    const { className, value, layout, onChange, items, template, popoverOpts, ...props } =
+      this.props;
 
     return (
-      <div data-component={CLASS_NAME} data-layout={layout} className={classNames(CLASS_NAME, className)} {...theProps}>
+      <div
+        data-component={CLASS_NAME}
+        data-layout={layout}
+        className={classNames(CLASS_NAME, className)}
+        {...props}>
         {this[layout! + 'Layout']}
       </div>
     );

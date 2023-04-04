@@ -8,21 +8,11 @@
 
 ## installation
 ```shell
-npm install -S @jswork/react-ant-status-switch
+yarn add @jswork/react-ant-status-switch
 ```
 
 ## usage
-1. import css
-  ```scss
-  @import "~@jswork/react-ant-status-switch/dist/style.css";
-
-  // or use sass
-  @import "~@jswork/react-ant-status-switch/dist/style.scss";
-
-  // customize your styles:
-  $react-ant-status-switch-options: ()
-  ```
-2. import js
+1. import js
   ```js
 __GENERATE_DAPP__
   ```

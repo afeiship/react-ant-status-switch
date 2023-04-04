@@ -3,8 +3,6 @@ import ReactAntStatusSwitch from '../../src/main';
 import styled from 'styled-components';
 import { Button } from 'antd';
 
-import '../../src/components/style.scss';
-
 const Container = styled.div`
   width: 80%;
   margin: 100px auto 0;
