@@ -1,7 +1,7 @@
 {
   "name": "@jswork/react-ant-status-switch",
   "homepage": "https://js.work",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React status swicher component based on antd.",
   "license": "MIT",
   "main": "dist/index.js",
@@ -12,7 +12,6 @@
   "scripts": {
     "dev": "vite",
     "clean": "rimraf dist",
-    "predocs": "node scripts/markdown.js",
     "build": "npm run clean && rollup -c",
     "docs": "tsc && vite build",
     "docs:serve": "vite preview",
@@ -66,7 +65,9 @@
     "@jswork/noop": "^1.0.0",
     "@jswork/rctpl-ant-radio-button": "^1.0.3",
     "@jswork/react-ant-radio-group": "^1.0.5",
-    "classnames": "^2.2.6"
+    "@jswork/react-list": "^2.0.5",
+    "classnames": "^2.2.6",
+    "tslib": "^2.8.1"
   },
   "publishConfig": {
     "access": "public",

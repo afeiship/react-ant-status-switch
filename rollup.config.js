@@ -1,7 +1,5 @@
 import typescript from 'rollup-plugin-typescript2';
 import resolve from '@rollup/plugin-node-resolve';
-import copy from 'rollup-plugin-copy';
-import scss from 'rollup-plugin-scss';
 import externals from 'rollup-plugin-node-externals';
 import banner from 'rollup-plugin-banner';
 import { terser } from 'rollup-plugin-terser';
@@ -46,23 +44,24 @@ export default [
 
       resolve(),
       replace({ __VERSION__: pkg.version, preventAssignment: true }),
-      terser({ output: { comments: false } }),
-      banner(nx.rollupBanner()),
-      image(),
       typescript({
         tsconfig: 'tsconfig.build.json',
+        include: ['src/**/*.ts', 'src/**/*.tsx'],
         clean: true
-      })
+      }),
+      terser({ output: { comments: false } }),
+      banner(nx.rollupBanner()),
+      image()
     ]
   },
-  {
-    input: 'src/components/style.scss',
-    output: null,
-    plugins: [
-      scss({ output: 'dist/style.css' }),
-      copy({
-        targets: [{ src: 'src/components/*.scss', dest: 'dist' }]
-      })
-    ]
-  }
+  // {
+  //   input: 'src/components/style.scss',
+  //   output: null,
+  //   plugins: [
+  //     scss({ output: 'dist/style.css' }),
+  //     copy({
+  //       targets: [{ src: 'src/components/*.scss', dest: 'dist' }]
+  //     })
+  //   ]
+  // }
 ];

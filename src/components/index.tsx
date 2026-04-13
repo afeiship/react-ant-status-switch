@@ -1,9 +1,8 @@
 import noop from '@jswork/noop';
 import classNames from 'classnames';
 import React, { Component } from 'react';
-import ReactAntRadioGroup from '@jswork/react-ant-radio-group';
-import RctplAntRadioButton from '@jswork/rctpl-ant-radio-button';
-import { Popover, Tag } from 'antd';
+import ReactList from '@jswork/react-list';
+import { Popover, Tag, Radio } from 'antd';
 
 const CLASS_NAME = 'react-ant-status-switch';
 
@@ -21,7 +20,7 @@ export type ReactAntStatusSwitchProps = {
   /**
    * List data source.
    */
-  items?: any[];
+  items: any[];
   /**
    * List item template.
    */
@@ -69,13 +68,22 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
     const { items } = this.props;
     const { value } = this.state;
     return (
-      <ReactAntRadioGroup
-        size="small"
-        items={items}
-        template={RctplAntRadioButton}
-        value={value}
-        onChange={this.handleRGChange}
-      />
+      <Radio.Group size="small" value={value} onChange={this.handleRGChange}>
+        <ReactList
+          data={items}
+          keyExtractor="value"
+          slots={{
+            item: ({ item }) => {
+              const { value: itemValue, label, ...rest } = item;
+              return (
+                <Radio.Button value={itemValue} {...rest}>
+                  {label}
+                </Radio.Button>
+              );
+            }
+          }}
+        />
+      </Radio.Group>
     );
   }
 
