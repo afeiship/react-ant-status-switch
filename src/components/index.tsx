@@ -6,11 +6,26 @@ import { Popover, Tag, Radio } from 'antd';
 
 const CLASS_NAME = 'react-ant-status-switch';
 
+export enum Layout {
+  Popover = 'popover',
+  Flat = 'flat',
+  Tag = 'tag',
+}
+
 export interface TemplateArgs {
   items: any[];
   item: any;
   index: number;
 }
+
+const RadioButtonItem = ({ item }: { item: any }) => {
+  const { value: itemValue, label, ...rest } = item;
+  return (
+    <Radio.Button value={itemValue} {...rest}>
+      {label}
+    </Radio.Button>
+  );
+};
 
 export type ReactAntStatusSwitchProps = {
   /**
@@ -36,7 +51,7 @@ export type ReactAntStatusSwitchProps = {
   /**
    * The default layout.
    */
-  layout?: string;
+  layout?: Layout;
   /**
    * The change handler.
    */
@@ -55,7 +70,7 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
   static displayName = CLASS_NAME;
   static version = '__VERSION__';
   static defaultProps = {
-    layout: 'popover',
+    layout: Layout.Popover,
     items: [],
     onChange: noop
   };
@@ -73,14 +88,7 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
           data={items}
           keyExtractor="value"
           slots={{
-            item: ({ item }) => {
-              const { value: itemValue, label, ...rest } = item;
-              return (
-                <Radio.Button value={itemValue} {...rest}>
-                  {label}
-                </Radio.Button>
-              );
-            }
+            item: RadioButtonItem
           }}
         />
       </Radio.Group>
@@ -143,13 +151,25 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
     const { className, value, layout, onChange, items, template, popoverOpts, ...props } =
       this.props;
 
+    const layoutView = (() => {
+      switch (layout) {
+        case Layout.Flat:
+          return this.flatLayout;
+        case Layout.Tag:
+          return this.tagLayout;
+        case Layout.Popover:
+        default:
+          return this.popoverLayout;
+      }
+    })();
+
     return (
       <div
         data-component={CLASS_NAME}
         data-layout={layout}
         className={classNames(CLASS_NAME, className)}
         {...props}>
-        {this[layout! + 'Layout']}
+        {layoutView}
       </div>
     );
   }
