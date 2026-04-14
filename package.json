@@ -1,7 +1,7 @@
 {
   "name": "@jswork/react-ant-status-switch",
   "homepage": "https://js.work",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "React status swicher component based on antd.",
   "license": "MIT",
   "main": "dist/index.js",
