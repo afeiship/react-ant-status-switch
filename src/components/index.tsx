@@ -148,7 +148,7 @@ export default class ReactAntStatusSwitch extends Component<ReactAntStatusSwitch
   };
 
   render() {
-    const { className, value, layout, onChange, items, template, popoverOpts, ...props } =
+    const { className, value, layout, onChange, items, template, popoverOpts, tagOpts, ...props } =
       this.props;
 
     const layoutView = (() => {
